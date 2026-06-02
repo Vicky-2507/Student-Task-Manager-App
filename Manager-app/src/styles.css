@@ -1,0 +1,11 @@
+/* FULL PAGE BACKGROUND FIX */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-attachment: fixed; /*  important */
+  font-family: Arial, sans-serif;
+}

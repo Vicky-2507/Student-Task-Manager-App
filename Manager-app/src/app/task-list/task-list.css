@@ -1,0 +1,252 @@
+/* PAGE TITLE */
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ADD BUTTON */
+.top-bar {
+  margin-bottom: 10px;
+}
+
+.add-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.3);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+/* TABLE */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.task-table th,
+.task-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.task-table th {
+  background: #2c3e50;
+  color: white;
+  font-weight: 500;
+}
+
+/* PRIORITY BADGE */
+.priority-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.medium {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* STATUS BADGE */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* BUTTONS */
+button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+/* VIEW BUTTON */
+.view-btn {
+  background-color: #eef2ff;
+  color: #3f51b5;
+  border: 1px solid #c5cae9;
+  transition: all 0.25s ease;
+}
+
+.view-btn:hover {
+  background-color: #3f51b5;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.3)
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+ background-color: #fdecea;
+  color: #c0392b;
+  border: 1px solid #f5c6cb;
+  transition: all 0.25s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ef4444;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+}
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  padding: 15px;
+  color: #888;
+}
+
+/* ROW HOVER */
+.task-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+
+/* OVERLAY */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOX */
+.popup-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: popupFade 0.2s ease;
+}
+
+/* TITLE */
+.popup-box h3 {
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.popup-box p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* ACTION BUTTONS */
+.popup-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* CANCEL */
+.popup-actions .cancel-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.popup-actions .cancel-btn:hover {
+  background: #d1d5db;
+}
+
+/* DELETE */
+.popup-actions .delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.popup-actions .delete-btn:hover {
+  background: #dc2626;
+}
+
+/* ANIMATION */
+@keyframes popupFade {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  z-index: 2000;
+  animation: slideIn 0.3s ease;
+}
+
+.toast.delete {
+  background: #ef4444;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

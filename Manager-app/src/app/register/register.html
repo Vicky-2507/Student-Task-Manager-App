@@ -1,0 +1,97 @@
+<div class="register-page">
+
+  <div class="register-card">
+
+    <div class="header">
+      <h1>Create Account</h1>
+      <p>Register to get started</p>
+    </div>
+
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+      <!-- USERNAME -->
+      <div class="form-group">
+        <label>Username</label>
+
+        <input type="text"
+          name="username"
+          [(ngModel)]="username"
+          required
+          #user="ngModel"
+          [ngClass]="{
+            'invalid-input': user.invalid && user.touched,
+            'valid-input': user.valid && user.touched
+          }"
+        />
+
+        <small class="error" *ngIf="user.invalid && user.touched">
+          Username required
+        </small>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Password</label>
+
+        <input type="password"
+          name="password"
+          [(ngModel)]="password"
+          required minlength="6"
+          #pass="ngModel"
+          [ngClass]="{
+            'invalid-input': pass.invalid && pass.touched,
+            'valid-input': pass.valid && pass.touched
+          }"
+        />
+
+        <small class="error" *ngIf="pass.errors?.['required'] && pass.touched">
+          Password required
+        </small>
+
+        <small class="error" *ngIf="pass.errors?.['minlength'] && pass.touched">
+          Minimum 6 characters
+        </small>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+
+        <input type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
+          #cpass="ngModel"
+          [ngClass]="{
+            'invalid-input': (confirmPassword !== password && cpass.touched),
+            'valid-input': (confirmPassword === password && cpass.touched)
+          }"
+        />
+
+        <small class="error" *ngIf="confirmPassword !== password && cpass.touched">
+          Passwords do not match
+        </small>
+      </div>
+
+      <!-- ERROR -->
+      <small class="error" *ngIf="errorMessage">{{ errorMessage }}</small>
+
+      <!-- SUCCESS -->
+      <small class="success" *ngIf="successMessage">{{ successMessage }}</small>
+
+      <!-- BUTTON -->
+      <button type="submit" [disabled]="registerForm.invalid">
+        Register
+      </button>
+
+      <!-- LOGIN LINK -->
+      <p class="login-link">
+        Already have an account?
+        <span (click)="goToLogin()">Login</span>
+      </p>
+
+    </form>
+
+  </div>
+
+</div>

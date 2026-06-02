@@ -1,0 +1,60 @@
+/* PAGE TITLE */
+h1 {
+font-size: 24px;
+font-weight: 600;
+color: #111827;
+margin-bottom: 10px;
+}
+
+/* CARDS CONTAINER */
+.cards {
+display: flex;
+gap: 20px;
+justify-content: center; 
+flex-wrap: wrap;   /* responsive */
+margin-top: 20px;
+}
+
+/* SINGLE CARD */
+.card {
+flex: 1;
+min-width: 220px;
+max-width: 280px;
+background: white;
+padding: 20px;
+border-radius: 14px;
+text-align: center;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+transition: all 0.2s ease;
+}
+
+/* CARD HOVER EFFECT */
+.card:hover {
+transform: translateY(-5px);
+}
+
+/* CARD TITLE */
+.card h3 {
+margin-bottom: 10px;
+font-size: 16px;
+color: #6b7280;
+}
+
+/* CARD VALUE */
+.card p {
+font-size: 26px;
+font-weight: bold;
+color: #111827;
+}
+
+.card:nth-child(1) {
+border-top: 4px solid #2563eb; /* blue */
+}
+
+.card:nth-child(2) {
+border-top: 4px solid #16a34a; /* green */
+}
+
+.card:nth-child(3) {
+border-top: 4px solid #f59e0b; /* orange */
+}

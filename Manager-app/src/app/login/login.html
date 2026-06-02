@@ -1,0 +1,83 @@
+<div class="login-page">
+
+  <div class="login-card">
+
+    <div class="login-header">
+      <h1>Login In</h1>
+      <p>Please login to continue</p>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="login-form">
+
+      <!-- USERNAME -->
+      <div class="form-group">
+        <label>Username</label>
+
+        <input 
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          (input)="onInputChange()"
+          required
+          #user="ngModel"
+          placeholder="Enter your username"
+          [ngClass]="{
+            'invalid-input': user.invalid && user.touched,
+            'valid-input': user.valid && user.touched
+          }"
+        />
+
+        <small class="error" *ngIf="user.invalid && user.touched">
+          Username is required
+        </small>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group">
+        <label>Password</label>
+
+        <input 
+            type="password"
+          name="password"
+          [(ngModel)]="password"
+          (input)="onInputChange()"
+          required
+          minlength="6"
+          #pass="ngModel"
+          placeholder="Enter your password"
+          [ngClass]="{
+            'invalid-input': pass.invalid && pass.touched,
+            'valid-input': pass.valid && pass.touched
+          }"
+        />
+
+        <small class="error" *ngIf="pass.errors?.['required'] && pass.touched">
+          Password is required
+        </small>
+
+        <small class="error" *ngIf="pass.errors?.['minlength'] && pass.touched">
+          Minimum 6 characters required
+        </small>
+
+        <!-- API ERROR -->
+      <small class="error-msg" *ngIf="errorMessage && submitted">
+        {{ errorMessage }}
+      </small>
+      </div>
+
+      <!-- BUTTON -->
+      <button type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <!-- REGISTER LINK -->
+      <p class="register-link">
+        Don't have an account?
+        <span (click)="goToRegister()">Register</span>
+      </p>
+
+    </form>
+
+  </div>
+
+</div>

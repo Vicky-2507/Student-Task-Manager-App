@@ -1,0 +1,164 @@
+<div class="task-container">
+
+  <div class="task-card">
+
+  <h2 class="title">
+  {{ isNewTask ? 'Add Task' : (isEdit ? 'Edit Task' : 'Task Details') }}
+</h2>
+    <!-- VIEW MODE -->
+    <div *ngIf="!isEdit">
+
+      <!-- ROW 1 -->
+      <div class="row">
+        <div class="field">
+          <label class="heading">Title</label>
+          <div class="value">{{ task.title }}</div>
+        </div>
+
+        <div class="field">
+          <label class="heading">Assigned To</label>
+          <div class="value">{{ task.assignedTo }}</div>
+        </div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="row">
+        <div class="field full">
+          <label class="heading">Description</label>
+          <div class="value description">
+            {{ task.description || 'No description provided' }}
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="row">
+        <div class="field">
+          <label class="heading">Priority</label>
+          <span class="badge"
+            [ngClass]="{
+              'high': task.priority === 'High',
+              'medium': task.priority === 'Medium',
+              'low': task.priority === 'Low'
+            }">
+            {{ task.priority }}
+          </span>
+        </div>
+
+        <div class="field">
+          <label class="heading">Due Date</label>
+          <div class="value">{{ task.dueDate | date:'d-M-yyyy'}}</div>
+        </div>
+      </div>
+
+      <!-- STATUS -->
+      <div class="row">
+        <div class="field">
+          <label class="heading">Status</label>
+          <span class="badge"
+            [ngClass]="{
+              'pending': task.status === 'Pending',
+              'completed': task.status === 'Completed'
+            }">
+            {{ task.status }}
+          </span>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="edit-btn" (click)="enableEdit()">Edit</button>
+        <button class="back-btn" (click)="goBack()">Back</button>
+      </div>
+
+    </div>
+
+    <!-- EDIT MODE -->
+    <div *ngIf="isEdit">
+
+      <form #taskForm="ngForm">
+
+        <!-- TITLE + ASSIGNED -->
+        <div class="row">
+          <div class="field">
+            <label class="heading">Title</label>
+            <input [(ngModel)]="task.title" name="title" required #title="ngModel"
+              [ngClass]="{ 'invalid': title.invalid && title.touched }" />
+            <small *ngIf="title.invalid && title.touched">Title is required</small>
+          </div>
+
+          <div class="field">
+            <label class="heading">Assigned To</label>
+            <input [(ngModel)]="task.assignedTo" name="assignedTo" required #assignedTo="ngModel"
+              [ngClass]="{ 'invalid': assignedTo.invalid && assignedTo.touched }" />
+            <small *ngIf="assignedTo.invalid && assignedTo.touched">
+              Assigned To is required
+            </small>
+          </div>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="row">
+          <div class="field full">
+            <label class="heading">Description</label>
+            <textarea [(ngModel)]="task.description" name="description" required #description="ngModel"
+              [ngClass]="{ 'invalid': description.invalid && description.touched }"></textarea>
+            <small *ngIf="description.invalid && description.touched">
+              Description is required
+            </small>
+          </div>
+        </div>
+
+        <!-- PRIORITY + DATE -->
+        <div class="row">
+          <div class="field">
+            <label class="heading">Priority</label>
+            <select [(ngModel)]="task.priority" name="priority" required #priority="ngModel"
+              [ngClass]="{ 'invalid': priority.invalid && priority.touched }">
+              <option value="" disabled>Select Priority</option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="heading">Due Date</label>
+            <input type="date" [(ngModel)]="task.dueDate" name="dueDate" required #dueDate="ngModel"
+              [ngClass]="{ 'invalid': dueDate.invalid && dueDate.touched }" />
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <div class="row">
+          <div class="field">
+            <label class="heading">Status</label>
+            <select [(ngModel)]="task.status" name="status" required #status="ngModel"
+              [ngClass]="{ 'invalid': status.invalid && status.touched }">
+              <option value="" disabled>Select Status</option>
+              <option>Pending</option>
+              <option>Completed</option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="save-btn" [disabled]="taskForm.invalid" (click)="saveTask(taskForm)">
+          Save
+        </button>
+        <button class="cancel-btn" (click)="goBack()">Cancel</button>
+
+        <!-- TOAST -->
+        <div class="toast" *ngIf="showSuccessToast">
+          Task saved successfully!
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

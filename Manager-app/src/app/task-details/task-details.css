@@ -1,0 +1,139 @@
+.task-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.task-card {
+  width: 100%;
+  max-width: 850px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* FIELD */
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.field.full {
+  flex: 100%;
+}
+
+/* LABEL */
+.heading {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* VALUE */
+.value {
+  background: #f3f4f6;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* BADGE */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+/* COLORS */
+.high { background: #fee2e2; color: #b91c1c; }
+.medium { background: #fef3c7; color: #b45309; }
+.low { background: #dcfce7; color: #15803d; }
+
+.pending { background: #fff3cd; color: #856404; }
+.completed { background: #d4edda; color: #155724; }
+
+/* INPUT */
+input, select, textarea {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* BORDER VALIDATION */
+.invalid {
+  border: 1.5px solid #ef4444;
+}
+
+/* ERROR TEXT */
+small {
+  color: #ef4444;
+  font-size: 11px;
+}
+
+/* BUTTONS */
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  transition: all 0.25s ease;
+}
+.save-btn:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.cancel-btn, .back-btn {
+  background: #ef4444;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+  transition: all 0.25s ease;
+}
+.cancel-btn:hover, .back-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.4);
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  background: #10b981;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+}
