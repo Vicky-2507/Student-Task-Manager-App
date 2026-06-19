@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../service/auth';
 import { Router } from '@angular/router';
@@ -17,12 +17,18 @@ export class LoginComponent {
   password = '';
   submitted = false;
   errorMessage = '';
+  showSuccessPopup = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   login(form: any) {
     this.submitted = true;
     this.errorMessage = '';
+    this.showSuccessPopup = false;
     console.log("Inside Form submit")
 
     if (form.invalid) return;
@@ -30,7 +36,12 @@ export class LoginComponent {
       console.log(this.username, this.password)
     this.auth.login(this.username, this.password).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard']);
+        this.showSuccessPopup = true;
+        this.cdr.detectChanges();
+
+        setTimeout(() => {
+          this.router.navigate(['/dashboard']);
+        }, 1500);
       },
       error: (err: any) => {
         this.errorMessage = err.message;

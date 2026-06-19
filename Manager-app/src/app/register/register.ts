@@ -17,13 +17,13 @@ export class RegisterComponent {
   confirmPassword = '';
 
   errorMessage = '';
-  successMessage = '';
+  showSuccessPopup = false;
 
   constructor(private router: Router) {}
 
   register(form: any) {
     this.errorMessage = '';
-    this.successMessage = '';
+    this.showSuccessPopup = false;
 
     if (form.invalid) return;
 
@@ -48,7 +48,7 @@ export class RegisterComponent {
 
     localStorage.setItem('users', JSON.stringify(users));
 
-    this.successMessage = 'Registration successful!  ';
+    this.showSuccessPopup = true;
 
     setTimeout(() => {
       this.router.navigate(['/login']);
